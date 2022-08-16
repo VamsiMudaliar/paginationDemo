@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : Vamsi Mudaliar
+  @group             : 
+  @last modified on  : 08-16-2022
+  @last modified by  : Vamsi Mudaliar
+-->
+<template>
+    <div class="pagination slds-m-bottom--xx-large slds-text-align_right">
+        <lightning-button-group>
+            <lightning-button label="Previous" disabled={disabledPrevious} onclick={prevHandler}></lightning-button>
+            
+            <template iterator:it={pageButtons}>
+                <div if:false={it.first} key={it.value}>
+                    <lightning-button label={it.value} data-label={it.value} onclick={handleClick}></lightning-button>
+                </div>
+                <div if:true={it.first} key={it.value}>
+                    <lightning-button label={it.value} data-label={it.value} onclick={handleClick} class="selected"></lightning-button>
+                </div>
+                
+            </template>
+            
+            <lightning-button label="Next" onclick={nextHandler} disabled={disabledNext}></lightning-button>
+        </lightning-button-group>
+    </div>
+</template>
